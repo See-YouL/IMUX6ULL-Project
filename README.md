@@ -138,7 +138,7 @@ print:
 
 输入命令
 
-```shell
+```bash
 make print
 ```
 
