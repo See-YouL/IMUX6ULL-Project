@@ -175,3 +175,52 @@ main: $(objects)
 | 自动化变量 | 描述 |
 | --- | --- |
 | $@ | 表示规则中的目标文件集合 |
+| $% | 如果目标是归档成员, 那么表示归档文件中的目标成员名 |
+| $< | 表示规则中的第一个依赖文件集合 |
+| $? | 表示规则中所有比目标文件更新的依赖文件集合 |
+| $^ | 表示规则中所有的依赖文件集合 |
+| $+ | 表示规则中所有的依赖文件集合, 但是不去除重复的依赖文件 |
+| $* | 表示规则中匹配到的模式的字符串 |
+
+```makefile
+objects = main.o input.o calcu.o
+main: $(objects)
+    gcc -o main $(objects)
+
+%.o: %.c
+    gcc -c $< 
+```
+
+### Makefile 伪目标
+
+伪目标是指**不是一个真正的文件, 但是可以通过make命令来执行**
+
+生成伪目标的方式: **在目标前面加上.PHONY**
+
+```makefile
+.PHONY: clean
+
+clean:
+    rm *.o
+    rm main
+```
+
+### Makefile 条件判断
+
+**用到再看**
+
+![条件判断语法](https://raw.githubusercontent.com/See-YouL/MarkdownPhotos/main/202401062155466.png)
+
+![条件判断语法](https://raw.githubusercontent.com/See-YouL/MarkdownPhotos/main/202401062156107.png)
+
+### Makefile 函数
+
+**用到再看**
+
+![](https://raw.githubusercontent.com/See-YouL/MarkdownPhotos/main/202401062200171.png)
+
+![](https://raw.githubusercontent.com/See-YouL/MarkdownPhotos/main/202401062201554.png)
+
+![](https://raw.githubusercontent.com/See-YouL/MarkdownPhotos/main/202401062201497.png)
+
+![](https://raw.githubusercontent.com/See-YouL/MarkdownPhotos/main/202401062202940.png)
